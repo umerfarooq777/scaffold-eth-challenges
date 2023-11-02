@@ -18,13 +18,17 @@ export default function FrontPage({
   mainnetProvider,
   blockExplorer,
 }) {
+
+  console.log(readContracts);
   const [methodName, setMethodName] = useLocalStorage("addSigner");
   return (
     <div style={{ padding: 32, maxWidth: 750, margin: "auto" }}>
       <div style={{ paddingBottom: 32 }}>
         <div>
+
           <Balance
             address={readContracts ? readContracts[contractName].address : readContracts}
+            // address={readContracts ? readContracts[contractName].address : "0xtest"}
             provider={localProvider}
             dollarMultiplier={price}
             fontSize={64}
@@ -56,7 +60,7 @@ export default function FrontPage({
 
           return (
             <>
-                <TransactionListItem item={item} mainnetProvider={mainnetProvider} blockExplorer={blockExplorer} price={price} readContracts={readContracts} contractName={contractName}/>
+              <TransactionListItem item={item} mainnetProvider={mainnetProvider} blockExplorer={blockExplorer} price={price} readContracts={readContracts} contractName={contractName} />
             </>
           );
         }}

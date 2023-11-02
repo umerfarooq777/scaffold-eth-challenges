@@ -26,6 +26,7 @@ export default function Transactions({
   writeContracts,
   blockExplorer,
 }) {
+  console.log("writeContracts", writeContracts);
   const [transactions, setTransactions] = useState();
   usePoller(() => {
     const getTransactions = async () => {
@@ -53,7 +54,8 @@ export default function Transactions({
         }
       }
       setTransactions(newTransactions);
-      console.log("Loaded",newTransactions.length)
+      console.log("Loaded", newTransactions.length)
+      console.log("newTransactions", newTransactions)
     };
     if (readContracts) getTransactions();
   }, 3777);
@@ -93,7 +95,7 @@ export default function Transactions({
     return <Spin />;
   }
 
-  console.log("transactions",transactions)
+  console.log("transactions", transactions)
 
   return (
     <div style={{ maxWidth: 750, margin: "auto", marginTop: 32, marginBottom: 32 }}>
@@ -157,7 +159,7 @@ export default function Transactions({
               <Button
 
                 key={item.hash}
-                
+
                 onClick={async () => {
                   const newHash = await readContracts[contractName].getTransactionHash(
                     item.nonce,
@@ -184,7 +186,7 @@ export default function Transactions({
               >
                 Exec
               </Button>
-          </TransactionListItem>
+            </TransactionListItem>
           );
         }}
       />

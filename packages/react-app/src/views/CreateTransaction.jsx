@@ -39,7 +39,7 @@ export default function CreateTransaction({
   const [data, setData] = useLocalStorage("data", "0x");
   const [isCreateTxnEnabled, setCreateTxnEnabled] = useState(true);
   const [decodedDataState, setDecodedData] = useState();
-  const [methodName, setMethodName] = useState();
+  const [methodName, setMethodName] = useState("transferFunds");
   const [selectDisabled, setSelectDisabled] = useState(false);
   let decodedData = "";
 
@@ -51,21 +51,24 @@ export default function CreateTransaction({
   let decodedDataObject = "";
   useEffect(() => {
     const inputTimer = setTimeout(async () => {
-      console.log("EFFECT RUNNING");
       try {
-        // if(methodName == "transferFunds"){
+        // console.log("EFFECT RUNNING", methodName);
+        // if (methodName == "transferFunds") {
         //   console.log("Send transaction selected")
-        //   console.log("🔥🔥🔥🔥🔥🔥",amount)
-        //     const calldata = readContracts[contractName].interface.encodeFunctionData("transferFunds",[to,parseEther("" + parseFloat(amount).toFixed(12))])
-        //     setData(calldata);
+        //   console.log("🔥🔥🔥🔥🔥🔥", amount)
+        //   // const calldata = readContracts[contractName].interface.encodeFunctionData("transferFunds", [to, parseEther("" + parseFloat(amount).toFixed(12))])
+        //   console.log("EFFECT RUNNING 22", calldata);
+        //   setData(calldata);
         // }
         // decodedDataObject = readContracts ? await readContracts[contractName].interface.parseTransaction({ data }) : "";
         // console.log("decodedDataObject", decodedDataObject);
         // setCreateTxnEnabled(true);
-        if(decodedDataObject.signature === "addSigner(address,uint256)"){
+
+        //!===
+        if (decodedDataObject.signature === "addSigner(address,uint256)") {
           setMethodName("addSigner")
           setSelectDisabled(true)
-        } else if (decodedDataObject.signature === "removeSigner(address,uint256)"){
+        } else if (decodedDataObject.signature === "removeSigner(address,uint256)") {
           setMethodName("removeSigner")
           setSelectDisabled(true)
         }
@@ -99,7 +102,7 @@ export default function CreateTransaction({
                 if (element.type === "uint256") {
                   return (
                     <p style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "left" }}>
-                  {element.name === "value" ? <><b>{element.name} : </b> <Balance fontSize={16} balance={decodedDataObject.args[index]} dollarMultiplier={price} /> </> : <><b>{element.name} : </b> {decodedDataObject.args[index] && decodedDataObject.args[index].toNumber()}</>}
+                      {element.name === "value" ? <><b>{element.name} : </b> <Balance fontSize={16} balance={decodedDataObject.args[index]} dollarMultiplier={price} /> </> : <><b>{element.name} : </b> {decodedDataObject.args[index] && decodedDataObject.args[index].toNumber()}</>}
                     </p>
                   );
                 }
@@ -112,8 +115,8 @@ export default function CreateTransaction({
 
       } catch (error) {
 
-        console.log("mistake: ",error);
-        if(data!== "0x") setResult("ERROR: Invalid calldata");
+        console.log("mistake: ", error);
+        if (data !== "0x") setResult("ERROR: Invalid calldata");
         setCreateTxnEnabled(false);
       }
     }, 500);
@@ -154,13 +157,13 @@ export default function CreateTransaction({
               onChange={setCustomNonce}
             />
           </div>
-                  <div style={{margin:8,padding:8}}>
-          <Select value={methodName} disabled={selectDisabled} style={{ width: "100%" }} onChange={ setMethodName }>
-            //<Option key="transferFunds">transferFunds()</Option>
-            <Option disabled={true} key="addSigner">addSigner()</Option>
-            <Option disabled={true} key="removeSigner">removeSigner()</Option>
-          </Select>
-        </div>
+          <div style={{ margin: 8, padding: 8 }}>
+            <Select value={methodName} disabled={selectDisabled} style={{ width: "100%" }} onChange={setMethodName}>
+              <Option key="transferFunds" >transferFunds()</Option>
+              <Option disabled={true} key="addSigner">addSigner()</Option>
+              <Option disabled={true} key="removeSigner">removeSigner()</Option>
+            </Select>
+          </div>
           <div style={inputStyle}>
             <AddressInput
               autoFocus

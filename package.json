@@ -64,7 +64,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
     "browserlist": "^1.0.1",
-    "caniuse-lite": "^1.0.30001218",
+    "caniuse-lite": "^1.0.30001559",
     "cors": "^2.8.5",
     "postcss-browser-comments": "^3.0.0"
   }

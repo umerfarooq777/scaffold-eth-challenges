@@ -38,7 +38,8 @@ describe("MetaMultiSigWallet Test", () => {
   });
 
   describe("Deployment", () => {
-    it("isOwner should return true for the owner address", async () => {     
+    it("isOwner should return true for the owner address", async () => {
+      console.log(await metaMultiSigWallet.isOwner(owner.address));
       expect(await metaMultiSigWallet.isOwner(owner.address)).to.equal(true);
     });
 
@@ -57,8 +58,8 @@ describe("MetaMultiSigWallet Test", () => {
       let to = metaMultiSigWallet.address;
       let value = 0;
 
-      let callData = metaMultiSigWallet.interface.encodeFunctionData("addSigner",[newSigner, 1]);
-      
+      let callData = metaMultiSigWallet.interface.encodeFunctionData("addSigner", [newSigner, 1]);
+
       let hash = await metaMultiSigWallet.getTransactionHash(nonce, to, value, callData);
 
       const signature = await owner.provider.send("personal_sign", [hash, owner.address]);
@@ -76,8 +77,8 @@ describe("MetaMultiSigWallet Test", () => {
       let to = metaMultiSigWallet.address;
       let value = 0;
 
-      let callData = metaMultiSigWallet.interface.encodeFunctionData("updateSignaturesRequired",[2]);
-      
+      let callData = metaMultiSigWallet.interface.encodeFunctionData("updateSignaturesRequired", [2]);
+
       let hash = await metaMultiSigWallet.getTransactionHash(nonce, to, value, callData);
 
       const signature = await owner.provider.send("personal_sign", [hash, owner.address]);
@@ -98,7 +99,7 @@ describe("MetaMultiSigWallet Test", () => {
       let value = ethers.utils.parseEther("0.1");
 
       let callData = "0x00"; // This can be anything, we could send a message 
-      
+
       let hash = await metaMultiSigWallet.getTransactionHash(nonce, to, value.toString(), callData);
 
       const signature = await owner.provider.send("personal_sign", [hash, owner.address]);
@@ -117,8 +118,8 @@ describe("MetaMultiSigWallet Test", () => {
 
       let amount = ethers.utils.parseEther("10");
 
-      let callData = monyo.interface.encodeFunctionData("approve",[addr1.address, amount]);
-      
+      let callData = monyo.interface.encodeFunctionData("approve", [addr1.address, amount]);
+
       let hash = await metaMultiSigWallet.getTransactionHash(nonce, to, value.toString(), callData);
 
       const signature = await owner.provider.send("personal_sign", [hash, owner.address]);

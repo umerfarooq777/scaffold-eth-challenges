@@ -6248,10 +6248,10 @@ caniuse-lite@^1.0.30001181:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001190.tgz#acc6d4a53c68be16cfc314d55c9cab637e558cba"
   integrity sha512-62KVw474IK8E+bACBYhRS0/L6o/1oeAVkpF2WetjV58S5vkzNh0/Rz3lD8D4YCbOTqi0/aD4X3LtoP7V5xnuAg==
 
-caniuse-lite@^1.0.30001218:
-  version "1.0.30001223"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001223.tgz#39b49ff0bfb3ee3587000d2f66c47addc6e14443"
-  integrity sha512-k/RYs6zc/fjbxTjaWZemeSmOjO0JJV+KguOBA3NwPup8uzxM1cMhR2BD9XmO86GuqaqTCO8CgkgH9Rz//vdDiA==
+caniuse-lite@^1.0.30001559:
+  version "1.0.30001559"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001559.tgz#95a982440d3d314c471db68d02664fb7536c5a30"
+  integrity sha512-cPiMKZgqgkg5LY3/ntGeLFUpi6tzddBNS58A4tnTgQw1zON7u2sZMU7SzOeVH4tj20++9ggL+V6FDOFMTaFFYA==
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -6809,9 +6809,9 @@ concat-stream@^1.5.0, concat-stream@^1.5.1, concat-stream@^1.6.0, concat-stream@
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
 
-"concat-stream@github:hugomrdias/concat-stream#feat/smaller":
+"concat-stream@github:maxodgen/concat-stream#feat/smaller":
   version "2.0.0"
-  resolved "https://codeload.github.com/hugomrdias/concat-stream/tar.gz/057bc7b5d6d8df26c8cf00a3f151b6721a0a8034"
+  resolved "https://codeload.github.com/maxodgen/concat-stream/tar.gz/057bc7b5d6d8df26c8cf00a3f151b6721a0a8034"
   dependencies:
     inherits "^2.0.3"
     readable-stream "^3.0.2"
@@ -14852,9 +14852,9 @@ ncp@0.4.x:
   resolved "https://registry.yarnpkg.com/ncp/-/ncp-0.4.2.tgz#abcc6cbd3ec2ed2a729ff6e7c1fa8f01784a8574"
   integrity sha1-q8xsvT7C7Spyn/bnwfqPAXhKhXQ=
 
-"ndjson@github:hugomrdias/ndjson#feat/readable-stream3":
+"ndjson@github:maxodgen/ndjson#feat/readable-stream3":
   version "1.5.0"
-  resolved "https://codeload.github.com/hugomrdias/ndjson/tar.gz/4db16da6b42e5b39bf300c3a7cde62abb3fa3a11"
+  resolved "https://codeload.github.com/maxodgen/ndjson/tar.gz/4db16da6b42e5b39bf300c3a7cde62abb3fa3a11"
   dependencies:
     json-stringify-safe "^5.0.1"
     minimist "^1.2.0"

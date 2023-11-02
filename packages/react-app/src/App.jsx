@@ -47,10 +47,11 @@ import { CreateTransaction, Transactions, Owners, FrontPage } from "./views";
 */
 
 /// 📡 What chain are your contracts deployed to?
-const targetNetwork = NETWORKS["localhost"]; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
+// const targetNetwork = NETWORKS["localhost"]; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
+const targetNetwork = NETWORKS["sepolia"]; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
-// const poolServerUrl = "https://backend.multisig.holdings:49832/";
-const poolServerUrl = "http://localhost:49832/";
+const poolServerUrl = "https://backend.multisig.holdings:49832/";
+// const poolServerUrl = "http://localhost:49832/";
 
 // 😬 Sorry for all the console logging
 const DEBUG = true;
@@ -71,6 +72,7 @@ const localProviderUrl = targetNetwork.rpcUrl;
 const localProviderUrlFromEnv = process.env.REACT_APP_PROVIDER ? process.env.REACT_APP_PROVIDER : localProviderUrl;
 if (DEBUG) console.log("🏠 Connecting to provider:", localProviderUrlFromEnv);
 const localProvider = new StaticJsonRpcProvider(localProviderUrlFromEnv);
+if (DEBUG) console.log("🏠 Connecting to localProvider:", localProvider);
 
 // 🔭 block explorer URL
 const blockExplorer = targetNetwork.blockExplorer;
@@ -109,6 +111,8 @@ function App(props) {
 
   // Load in your local 📝 contract and read a value from it:
   const readContracts = useContractLoader(localProvider);
+  if (DEBUG) console.log("🏠 Connecting to localProvider:", readContracts);
+
 
   // If you want to make 🔐 write transactions to your contracts, use the userProvider:
   const writeContracts = useContractLoader(userProvider);
@@ -278,7 +282,7 @@ function App(props) {
     <div className="App">
       {/* ✏️ Edit the header and change the title to your project name */}
       <Header />
-      {networkDisplay}
+      {/* {networkDisplay} //uncomment if needed */}
       <Menu style={{ textAlign: "center" }} selectedKeys={[location.pathname]} mode="horizontal">
         <Menu.Item key="/">
           <Link to="/">MultiSig</Link>
